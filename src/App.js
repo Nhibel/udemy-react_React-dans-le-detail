@@ -2,25 +2,21 @@ import "./App.css";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [dataImg, setDataImg] = useState();
+  const [timer, setTimer] = useState(1);
 
   useEffect(() => {
-    fetch("https://api.thecatapi.com/v1/images/search")
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        setDataImg(data[0].url);
-      });
+    const intervalID = setInterval(() => {
+      setTimer((timer) => timer + 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalID);
+    };
   }, []);
 
   return (
     <div className="App">
-      {dataImg && (
-        <img src={dataImg} alt="cat image" style={{ width: "500px" }} />
-      )}
+      <h1>{timer}</h1>
     </div>
   );
 }
