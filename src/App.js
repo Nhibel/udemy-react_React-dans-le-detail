@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <button onClick={toggleFunc}>Toggle</button>
-      <h2>{toggle && <Timer />}</h2>
+      <h1>{toggle && <Timer />}</h1>
     </div>
   );
 }

@@ -9,15 +9,16 @@ function Timer() {
     }, 0.1);
 
     return () => {
-      alert("Composant détruit");
       clearInterval(intervalID);
     };
   }, []);
 
   return (
-    <div className="App">
-      <h1>{timer}</h1>
-    </div>
+    // Les React Fragment permettent de ne pas avoir à entourer les éléments du return par une div
+    // Les anciennes versions doivent contenir un élément Fragment dans l'import react et on remplace <> ... </> par <Fragment> ... </Fragment>
+    <>
+      <h2>{timer}</h2>
+    </>
   );
 }
 
