@@ -23,7 +23,17 @@ function App() {
 
   // useEffect se "déclenche" après le chargement du DOM, permet ensuite de contrôler la vidéo
   useEffect(() => {
-    console.log(ref);
+    // On lance une action lors d'un resize
+    window.addEventListener("resize", actionResize);
+
+    function actionResize() {
+      console.log("Resized");
+    }
+
+    // On clean lors de la destruction du useEffect (changement de page par exemple)
+    return () => {
+      window.removeEventListener("resize", actionResize);
+    };
   }, []);
 
   return (
