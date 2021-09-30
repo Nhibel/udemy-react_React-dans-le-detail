@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import Content from "./Content";
 
 function App() {
@@ -12,20 +12,13 @@ function App() {
     setToggle(newToggle);
   };
 
+  const tableau = useMemo(() => {
+    return [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  }, []);
+
   return (
     <div className="App">
-      <Content>
-        <h1>Titre de mon article 1</h1>
-        <p>Lorem ipsum dolor sit amet.</p>
-      </Content>
-      <Content>
-        <h1>Titre de mon article 2</h1>
-        <p>Lorem ipsum dolor sit amet.</p>
-      </Content>
-      <Content>
-        <h1>Titre de mon article 3</h1>
-        <p>Lorem ipsum dolor sit amet consectetur.</p>
-      </Content>
+      <Content num={tableau} />
       <button onClick={toggleFunc}>Toggle</button>
     </div>
   );
